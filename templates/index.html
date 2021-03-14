@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Accueil</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="color: blue">Chiffrement/D&eacute;chiffrement de texte</h1>
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            <strong>Oh mince!</strong> {{ error_message }}
+        </div>
+        {% endif %}
+        <!-- Utilisation de la méthode GET dans le cadre du cours -->
+        <form method="GET">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Choix de l'algorithme</h5>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="algo">Algorithme de chiffrement</label>
+                    <select class="form-control" id="algo" name="algo" aria-label="Default select example">
+                        <option value="cesar" selected>C&eacute;sar</option>
+                        <option value="frequence">Analyse fr&eacute;quentielle</option>
+                        <option value="vigenere">Vigenere</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="shift">D&eacute;calage</label>
+                    <input type="number" class="form-control" id="shift" name="decalage"
+                        placeholder="Décalage (pour l'algo de césar)">
+                </div>
+                <div class="col-12">&nbsp;<br></div>
+                <div class="col-12">
+                    <h5>R&eacute;sultat de l'analyse fr&eacute;quentielle</h5>
+                    {% if frequency_list != None %}
+                    {{ frequency }}
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Lettre</th>
+                                <th scope="col">Nombre d'apparition</th>
+                                <th scope="col">Pourcentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for frequency in frequency_list %}
+                            <tr>
+                                <th scope="row">{{ frequency[0] }}</th>
+                                <td>{{ frequency[1] }}</td>
+                                <td>{{ frequency[2] }} %</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    Pas de texte &agrave; analyser
+                    {% endif %}
+                    <div class="alert alert-info" role="alert">
+                        <strong>Info : </strong> Pour que le tableau se remplisse, vous devrez choisir le bon algorithme de chiffrement, saisir un texte dans le champ texte en clair et et cocher la bonne action en bas de la page !
+                      </div>
+                </div>
+                <div class="col-12">&nbsp;<br></div>
+                <div class="col-12">
+                    <h5>Champs de texte</h5>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="clear-text">Texte en clair</label>
+                    <input class="form-control" id="clear-text" name="texte" value="{{ clear_text }}">
+                </div>
+                <!--<div class="col-12">&nbsp;<br></div>-->
+                <div class="col-md-4">
+                    <label for="key">Cl&eacute;</label>
+                    <input type="text" id="key" name="cle" class="form-control" placeholder="Clé">
+                </div>
+                <!--<div class="col-12">&nbsp;<br></div>-->
+                <div class="form-group col-md-4">
+                    <label for="encryted-text">Texte chiffr&eacute;</label>
+                    <input class="form-control" id="encryted-text" name="crypte"  value="{{ crypted_text }}">
+                </div>
+                <div class="col-12">&nbsp;<br></div>
+                <div class="col-12 text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="action" id="encryption" value="chiffrer"
+                            checked>
+                        <label class="form-check-label" for="encryption">Chiffer le texte</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="action" id="decryption" value="dechiffrer">
+                        <label class="form-check-label" for="decryption">Déchiffrer le texte</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="action" id="analysis" value="analyse">
+                        <label class="form-check-label" for="analysis">Analyse fréquentielle</label>
+                    </div>
+                </div>
+                <div class="col-12">&nbsp;<br></div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-success">C'est parti !</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <footer class="text-center" style="background-color: rgb(155, 149, 149);">
+        &copy; 2021 - DANSOKO Cheikna pour le cours de S&eacute;curit&eacute; R&eacute;seau
+    </footer>
+</body>
+
+</html>
