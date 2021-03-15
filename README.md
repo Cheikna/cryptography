@@ -61,7 +61,7 @@ http://localhost:5000/api?algo=cesar&decalage=-3&texte=&cle=&crypte=PBZROFQB&act
 #### Algorithme de Vigenere  
 1. Chiffrer un texte :  
 algo=vigenere  
-texte=&lt;texte_a_chiffrer&gt;
+texte=&lt;texte_a_chiffrer&gt;  
 cle=&lt;cle_pour_chiffrer&gt;  
 action=chiffrer  
   
@@ -72,7 +72,7 @@ http://localhost:5000/api?algo=vigenere&texte=dCode+Vigenere+automatiquement&cle
 
 2. Déchiffer un texte :  
 algo=vigenere  
-cle=&lt;cle_pour_dechiffrer&gt;
+cle=&lt;cle_pour_dechiffrer&gt;  
 crypte=&lt;texte_a_dechiffrer&gt;  
 action=dechiffrer  
   
