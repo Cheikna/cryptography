@@ -20,5 +20,7 @@ def raw_format():
         return clear_text
     else:
         return "Texte en clair : {0}<br> Texte crypté : {1} <br> Analyse frequentielle : {2}".format(clear_text, cryted_text, frequency_list)
-    #return handle(request.args)
-    #return render_template("index.html", algo="testsfgdfgdsc")
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')

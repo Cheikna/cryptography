@@ -27,7 +27,7 @@ http://localhost:5000/api
 
 #### Analyse fréquentielle  
 algo=frequence  
-texte=<texte_a_analyser>  
+texte=&lt;texte_a_analyser&gt;  
 action=analyse  
   
 Exemple :  
@@ -38,8 +38,8 @@ http://localhost:5000/api?algo=frequence&texte=sdf+sdg++dh+sgtdfh++jkrtrsviospvh
 #### Algorithme de César  
 1. Chiffrement de texte :  
 algo=cesar  
-decalage=<nombre_entier>  
-texte=<texte_a_chiffrer>  
+decalage=&lt;nombre_entier&gt;  
+texte=&lt;texte_a_chiffrer&gt;  
 action=chiffrer   
   
 Exemple : 
@@ -49,8 +49,8 @@ http://localhost:5000/api?algo=cesar&decalage=-3&texte=securite&cle=&crypte=&act
   
 2. Déchiffrement de texte :  
 algo=cesar  
-decalage=<nombre_entier>  
-crypte=<texte_a_dechiffrer>  
+decalage=&lt;nombre_entier&gt;  
+crypte=&lt;texte_a_dechiffrer&gt;  
 action=dechiffrer  
    
 Exemple : 
@@ -61,8 +61,8 @@ http://localhost:5000/api?algo=cesar&decalage=-3&texte=&cle=&crypte=PBZROFQB&act
 #### Algorithme de Vigenere  
 1. Chiffrer un texte :  
 algo=vigenere  
-texte=<texte_a_chiffrer>
-cle=<cle_pour_chiffrer>  
+texte=&lt;texte_a_chiffrer&gt;
+cle=&lt;cle_pour_chiffrer&gt;  
 action=chiffrer  
   
 Exemple : 
@@ -72,8 +72,8 @@ http://localhost:5000/api?algo=vigenere&texte=dCode+Vigenere+automatiquement&cle
 
 2. Déchiffer un texte :  
 algo=vigenere  
-cle=<cle_pour_dechiffrer>
-crypte=<texte_a_dechiffrer>  
+cle=&lt;cle_pour_dechiffrer&gt;
+crypte=&lt;texte_a_dechiffrer&gt;  
 action=dechiffrer  
   
 Exemple : 
