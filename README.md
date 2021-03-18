@@ -1,12 +1,17 @@
 # Cryptographie
 
 ## Procédure
-1. Récupérer l'image Docker et lancer le conteneur
+1. Récupérer l'image Docker (ou metrre à jour celle que vous avez)
 ```
-sudo docker run -dp 5000:5000 ceiko/cryptography
+docker pull ceiko/cryptography
 ```
 
-2. Ouvrir un navigateur web et se rendre à l'url suivante :
+2.Récupérer l'image Docker et lancer le conteneur
+```
+docker run -dp 5000:5000 ceiko/cryptography
+```
+
+3. Ouvrir un navigateur web et se rendre à l'url suivante :
 ```
 http://localhost:5000/
 ```
@@ -15,7 +20,7 @@ http://localhost:5000/
 Afin d'utiliser une interface WEB, ouvrir un navigateur Web à l'URL décrite plus haut.  
 Enfin, remplir les différents champs en fonction de ce que vous souhaitez faire.  
 
-## Quelques exemples API
+## Utilisation en mode API et quelques exemples
 ### Préambule
 Il est également possible de faire des requêtes sans passer par une interface WEB.  
 Pour ce faire, l'URL de base est la suivante :
@@ -81,5 +86,31 @@ Exemple :
 http://localhost:5000/api?algo=vigenere&cle=securite&crypte=BI+O%27UGXXPDI+FUEAHOG+GJYZSGE&action=dechiffrer
 ```
 
-
+## Plus d'informations sur les algorithmes de chiffrements
+### Analyse fréquentielle
+```
+https://www.dcode.fr/analyse-frequences
+```
+```
+https://fr.wikipedia.org/wiki/Analyse_fr%C3%A9quentielle
+```
+  
+#### Code de César
+```
+https://www.dcode.fr/chiffre-cesar
+```
+```
+https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage
+```
+  
+### Vigenère
+```
+https://www.dcode.fr/chiffre-vigenere
+```
+```
+https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re
+```
+```
+https://geekeries.org/2015/06/tp-cryptographie-attaque-dun-chiffre-de-vigenere/?cn-reloaded=1
+```
 

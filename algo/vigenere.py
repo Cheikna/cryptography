@@ -45,6 +45,8 @@ def elongate_key(text, key):
 
 
 def encrypt_or_decrypt_with_matrix(text, key, is_action_to_encrypt=True):
+    text = text.upper()
+    key = key.replace(" ", "").upper()
     result = ""
     vigenere_operation = get_crypted_value_from_matrix
     if not is_action_to_encrypt:

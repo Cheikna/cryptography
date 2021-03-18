@@ -4,24 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                $(".toast").toast('show');
+            });
+        </script>
     <title>Accueil</title>
 </head>
 
 <body>
     <div class="container">
+        {% if encryption_decryption_time %}
+        <div class="row justify-content-center">
+            <div class="toast" data-autohide="false">
+                <div class="toast-header">
+                    <strong class="mr-auto">Dur&eacute;e du traitement</strong>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                <div class="toast-body">
+                    Le temps d'encryption ou de d&eacute;cryption est {{ encryption_decryption_time }} milliseconde(s)
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <h1 style="color: blue">Chiffrement/D&eacute;chiffrement de texte</h1>
         {% if error_message %}
         <div class="alert alert-danger" role="alert">
@@ -39,7 +58,8 @@
                     <select class="form-control" id="algo" name="algo" aria-label="Default select example">
                         <option value="cesar" selected>C&eacute;sar</option>
                         <option value="frequence">Analyse fr&eacute;quentielle</option>
-                        <option value="vigenere">Vigenere</option>
+                        <option value="vigenere">Vigen&egrave;re</option>
+                        <option value="vigenere-matrice">Vigen&egrave;re (r&eacute;solution matricielle)</option>
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -74,8 +94,10 @@
                     Pas de texte &agrave; analyser
                     {% endif %}
                     <div class="alert alert-info" role="alert">
-                        <strong>Info : </strong> Pour que le tableau se remplisse, vous devrez choisir le bon algorithme de chiffrement, saisir un texte dans le champ texte en clair et et cocher la bonne action en bas de la page !
-                      </div>
+                        <strong>Info : </strong> Pour que le tableau se remplisse, vous devrez choisir le bon algorithme
+                        de chiffrement, saisir un texte dans le champ texte en clair et et cocher la bonne action en bas
+                        de la page !
+                    </div>
                 </div>
                 <div class="col-12">&nbsp;<br></div>
                 <div class="col-12">
@@ -93,7 +115,7 @@
                 <!--<div class="col-12">&nbsp;<br></div>-->
                 <div class="form-group col-md-4">
                     <label for="encryted-text">Texte chiffr&eacute;</label>
-                    <input class="form-control" id="encryted-text" name="crypte"  value="{{ crypted_text }}">
+                    <input class="form-control" id="encryted-text" name="crypte" value="{{ crypted_text }}">
                 </div>
                 <div class="col-12">&nbsp;<br></div>
                 <div class="col-12 text-center">
