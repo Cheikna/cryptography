@@ -1,12 +1,12 @@
 # Cryptographie
 
 ## Procédure
-1. Récupérer l'image Docker (ou metrre à jour celle que vous avez)
+1. Récupérer l'image Docker (ou mettre à jour celle que vous avez)
 ```
 docker pull ceiko/cryptography
 ```
 
-2.Récupérer l'image Docker et lancer le conteneur
+2. Lancer le conteneur
 ```
 docker run -dp 5000:5000 ceiko/cryptography
 ```

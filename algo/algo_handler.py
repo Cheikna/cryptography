@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 def handle(parameters):
+    # Recuperation des parametres
     algo = parameters.get("algo")
     shift = parameters.get("decalage")
     clear_text = parameters.get("texte")
@@ -13,8 +14,10 @@ def handle(parameters):
     action = parameters.get("action")
     frequency_list = []
     no_encryption_decryption_time = 0
+    # Temps pour calculer la duree d'execution de l'algorithme
     begin_date = datetime.now()
     encryption_decryption_time = 0
+    # Debut des cas d'erreur de maniere generale : cas avec des champs de textes vides
     if (action == None or action.strip() == ""):
         return ("Une action doit être définie ou des champs sont manquants.", "", frequency_list, False, action, no_encryption_decryption_time)
     if(algo == "frequence" and action != "analyse"):
@@ -25,8 +28,8 @@ def handle(parameters):
         return ("Le champ texte crypté/chiffré ne doit pas être vide. Si vous souhaitez faire une simple analyse sélectionner le radio bouton 'Analyse'", "", frequency_list, False, action, no_encryption_decryption_time)
     if action == "analyse" and (clear_text == None or clear_text.strip() == ""):
         return ("Pour l'analyse, le champ de texte en clair ne doit pas être vide.", "", frequency_list, False, action)
-
     # Fin des cas d'erreurs
+    ## Algorithme de Cesar
     if algo == "cesar":
         if shift == None or not is_int(shift):
             return ("Dans le cadre du chiffrement de César, le décalage doit être un nombre entier !", "", frequency_list, False, action, no_encryption_decryption_time)
@@ -38,8 +41,10 @@ def handle(parameters):
             else:
                 clear_text = caesar.encrypt_or_decrypt(
                     cryted_text, int(shift), False)
+    ## Analyse frequentielle
     elif algo == "frequence":
         frequency_list = frequency.get_most_probable_decryption(clear_text)
+     ## Vigenere
     elif algo == "vigenere" or algo == "vigenere-matrice":
         if (key == None or key.strip() == ""):
             return ("Dans le cadre de l'algorithme de Vigenère, la clé doit être renseignée !", "", frequency_list, False, action, no_encryption_decryption_time) 
