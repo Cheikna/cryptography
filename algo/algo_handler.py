@@ -26,8 +26,8 @@ def handle(parameters):
         return ("Le champ texte en clair ne doit pas être vide. Si vous souhaitez faire une simple analyse sélectionner le radio bouton 'Analyse'", "", frequency_list, False, action, no_encryption_decryption_time)
     if action == "dechiffer" and (cryted_text == None or cryted_text.strip() == ""):
         return ("Le champ texte crypté/chiffré ne doit pas être vide. Si vous souhaitez faire une simple analyse sélectionner le radio bouton 'Analyse'", "", frequency_list, False, action, no_encryption_decryption_time)
-    if action == "analyse" and (clear_text == None or clear_text.strip() == ""):
-        return ("Pour l'analyse, le champ de texte en clair ne doit pas être vide.", "", frequency_list, False, action)
+    if action == "analyse" and (cryted_text == None or cryted_text.strip() == ""):
+        return ("Pour l'analyse, le champ de texte crypté ne doit pas être vide.", "", frequency_list, False, action, no_encryption_decryption_time)
     # Fin des cas d'erreurs
     ## Algorithme de Cesar
     if algo == "cesar":
@@ -43,7 +43,7 @@ def handle(parameters):
                     cryted_text, int(shift), False)
     ## Analyse frequentielle
     elif algo == "frequence":
-        frequency_list = frequency.get_most_probable_decryption(clear_text)
+        (frequency_list, clear_text) = frequency.get_most_probable_decryption(cryted_text)
      ## Vigenere
     elif algo == "vigenere" or algo == "vigenere-matrice":
         if (key == None or key.strip() == ""):

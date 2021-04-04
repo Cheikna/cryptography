@@ -32,12 +32,12 @@ http://localhost:5000/api
 
 #### Analyse fréquentielle  
 algo=frequence  
-texte=&lt;texte_a_analyser&gt;  
+crypte=&lt;texte_a_analyser&gt;  
 action=analyse  
   
 Exemple :  
 ```
-http://localhost:5000/api?algo=frequence&texte=sdf+sdg++dh+sgtdfh++jkrtrsviospvh+qp+yvgzpsy+ho+qemifgqhewoh+qreihogesuhgzqepiqgherghqzmg+ohsrhemrghoqelqmsoyy%22haozaz&action=analyse
+http://localhost:5000/api?algo=frequence&crypte=sdf+sdg++dh+sgtdfh++jkrtrsviospvh+qp+yvgzpsy+ho+qemifgqhewoh+qreihogesuhgzqepiqgherghqzmg+ohsrhemrghoqelqmsoyy%22haozaz&action=analyse
 ```
 
 #### Algorithme de César  

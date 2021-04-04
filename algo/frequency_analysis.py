@@ -57,8 +57,7 @@ def get_most_probable_decryption(text):
             if probable_letter != None:
                 current_char = probable_letter
         result += current_char
-    print(result)
-    return letters_repartition_descending_order
+    return (letters_repartition_descending_order, result)
 
 """
 Recherche de la lettre la plus probable
