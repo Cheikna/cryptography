@@ -19,6 +19,6 @@ def raw_format():
     if not is_success:
         return clear_text
     else:
-        return "Texte en clair : {0}<br> Texte crypté : {1} <br> Analyse frequentielle : {2} <br> Temps d'exécution de l'ago {3} millisecondes".format(clear_text, cryted_text, frequency_list, encryption_decryption_time)
+        return "Texte en clair : {0}<br> Texte crypté : {1} <br> Analyse frequentielle : {2} <br> Temps d'exécution de l'ago : {3} millisecondes".format(clear_text, cryted_text, frequency_list, encryption_decryption_time)
 
 

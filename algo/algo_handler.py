@@ -39,7 +39,7 @@ def handle(parameters):
                 clear_text = caesar.encrypt_or_decrypt(
                     cryted_text, int(shift), False)
     elif algo == "frequence":
-        frequency_list = frequency.frequency(clear_text)
+        frequency_list = frequency.get_most_probable_decryption(clear_text)
     elif algo == "vigenere" or algo == "vigenere-matrice":
         if (key == None or key.strip() == ""):
             return ("Dans le cadre de l'algorithme de Vigenère, la clé doit être renseignée !", "", frequency_list, False, action, no_encryption_decryption_time) 
